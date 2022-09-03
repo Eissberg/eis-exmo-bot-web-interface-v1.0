@@ -1,0 +1,391 @@
+/* Загальні стилі start */
+
+body {
+  /* font: 400 14px/1 'Roboto Flex', sans-serif; */
+  font-family: 'Rubik', sans-serif;
+  background-color: rgb(53, 82, 163);
+}
+
+/* Загальні стилі end */
+/* Обнулення стилів start */
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #FFFFFF; 
+  font-size: 14px;
+  line-height: 16px; 
+  letter-spacing: 0.05em
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+/* Обнулення стилів end */
+/* Додаткові стилі start */
+.absolute {
+  position: absolute;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-grid {
+  display: grid;
+}
+
+.j-c-center {
+  justify-content: center;
+}
+
+.j-i-center {
+  justify-items: center;
+}
+
+.j-i-space-around {
+  justify-items: space-around;
+}
+
+.j-c-space-around {
+  justify-content:space-around;
+}
+
+.j-c-space-between {
+  justify-content: space-between;
+}
+
+.a-c-center {
+  align-content: center;
+}
+
+.a-i-center {
+  align-items: center;
+}
+
+.f-d-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.j-s-left {
+  justify-self: left;
+}
+
+.j-s-right {
+  justify-self: right;
+}
+
+.t-a-center {
+  text-align: center;
+}
+
+.font-weigth-bold {
+  font-weight: 700;
+}
+
+.font-weight-normal {
+  font-weight: 300;
+}
+
+/* Додаткові стилі end */
+/* Основні стилі start */
+
+.inner {
+  margin: 5px 5px 5px 5px;
+  background: linear-gradient(89.85deg, rgba(74, 125, 201, 0.8) 0.13%, rgba(109, 151, 214, 0.8) 99.88%);
+  box-shadow: 0 3px 7px 0 rgb(0 0 0 / 35%);
+}
+
+.inner-header {
+  padding: 0px 5px 0px 5px;
+  box-shadow: 0 0px 3px 0 rgba(255, 251, 251, 0.836);
+}
+
+.title {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  margin-left: 150px;
+  color: #FFFFFF;
+}
+
+.versus {
+  margin-left: 5px;
+}
+
+.inner-header-nav a + a {
+  margin-left: 10px;
+}
+
+.grid-container {
+  background: linear-gradient(89.85deg, rgba(74, 125, 201, 0.8) 0.13%, rgba(109, 151, 214, 0.8) 99.88%);
+  width: 100%-5px;
+  height: 890px;
+  grid-template-columns: 175px repeat(4, 1fr) 130px;
+  grid-gap: 5px;
+  margin: 0px 5px 0px 5px;
+  padding-bottom: 5px;
+}
+
+.grid-container-header {
+  margin-top: 10px;
+  width: 100%;
+  height: 20px;
+  color: #FFFFFF;
+  box-shadow: 0 0px 3px 0 rgba(255, 251, 251, 0.836);
+
+}
+
+.grid-container-header-currency {
+  grid-column: span 6;
+  height: 20px;
+  color: #FFFFFF;
+  width: 100%;
+  box-shadow: 0 0px 3px 0 rgba(255, 251, 251, 0.836);
+}
+
+.grid-container-buttons-main, 
+.grid-container-buttons-sub {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  box-shadow: 0 0px 3px 0 rgba(255, 251, 251, 0.836);
+}
+
+.grid-buttons {
+  flex-direction: column;
+}
+
+.grid-buttons a {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+}
+
+.grid-container-buttons-sub .grid-buttons .btn {
+  height: 35px;
+}
+
+.test {
+  background: #000;
+  width: 100%;
+  height: 230px;
+  color: #FFFFFF;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px 3px;
+  border-top: 1px solid #436173;
+  background: #6d97d6;
+  background: -webkit-gradient(linear, left top, left bottom, from(#4f9bc7), to(#4a7dc9));
+  background: -webkit-linear-gradient(top, #6d97d6, #4a7dc9);
+  background: -moz-linear-gradient(top, #6d97d6, #4a7dc9);
+  background: -ms-linear-gradient(top, #6d97d6, #4a7dc9);
+  background: -o-linear-gradient(top, #6d97d6, #4a7dc9);
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  box-shadow: 0 8px 15px rgba(125, 173, 212, 0.3);
+  color: #212121;
+  border: 1px solid transparent;
+  cursor: pointer;
+  border-color: #69a6df;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  width: 12%;
+  height: 70%;
+}
+
+.btn:hover {
+  border-top-color: #76abc9;
+  background: #4a7dc9;
+  color: #caccd9;
+  box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+}
+
+.btn:active {
+  border-top-color: #3c82b0;
+  background: #6d97d6;
+}
+
+.btn.btn-default {
+  margin-top: 2px;
+  margin-bottom: 3px;
+  max-height: 45px;
+  max-width: 140px;
+  width: 100px;
+}
+
+.label {
+  width: 10px;
+  height: 20px;
+  background: rgb(119, 45, 45);
+  box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+  margin: 30px 0px 0px 10px;
+  position: absolute;
+  left: 140px;
+}
+
+.grid-container-monitor {
+  background-color:#212121;
+  color:rgba(198, 206, 218, 0.8);
+  width: 100%;
+  height: 100%;
+  grid-template-rows: repeat(2, 1fr);
+  box-shadow: 0 0px 3px 0 rgba(255, 251, 251, 0.836);
+}
+
+.grid-container-monitor-up, .grid-container-monitor-down {
+  grid-template-columns: repeat(4, 1fr);
+  box-shadow: 0 0px 3px 0 rgba(255, 251, 251, 0.836);
+}
+
+.grid-container-monitor-name {
+  padding-top: 20px;
+}
+
+.grid-container-monitor-data {
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  padding-bottom: 20px;
+}
+
+.grid-container-monitor-down img {
+  width: 14px;
+  height: 14px;
+}
+
+.grid-container-balance {
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0px 3px 0 rgba(255, 251, 251, 0.836);
+  
+}
+
+.grid-container-balance-inner {
+  width: 100%;
+  height: 30%;
+  grid-template-columns: repeat(2, 1fr);
+  letter-spacing: 0.05em;
+  box-shadow: 0 0px 3px 0 rgba(255, 251, 251, 0.836);
+}
+
+.grid-container-differnce-inner {
+  width: 100%;
+  height: 100%;
+  grid-template-columns: repeat(5, 1fr);
+  padding-left: 15px;
+}
+
+.grid-container-balance-inner p,
+.grid-container-differnce-inner p {
+  padding-top: 10px;
+}
+
+.grid-container-analysis {
+  width: 100%;
+  height: 100%;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 15px 0px 15px 15px;
+  box-shadow: 0 0px 3px 0 rgba(255, 251, 251, 0.836);
+}
+
+.grid-container-transactions {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0px 3px 0 rgba(255, 251, 251, 0.836);
+  padding: 15px;
+}
+
+
+/* Основні стилі end */

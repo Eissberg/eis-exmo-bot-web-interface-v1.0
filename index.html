@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,600;8..144,800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="#">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.js"></script>
+    <script type="text/javascript" src="js/rsiS.js"></script>
+    <script type="text/javascript" src="js/pairS.js"></script>
+    <script type="text/javascript" src="js/apiS2.js"></script>
+    <title>Selling_v_0_6</title>
+</head>
+
+<body>
+    <div class="inner">
+        <div class="inner-header d-flex j-c-space-between a-i-center">
+            <img src="img/CRlogo.svg" alt="Logo">
+            <div class="inner-header-text d-flex">
+                <h1 class="title">eisBot для Exmo</h1>
+                <p class="versus">v.0.6</p>
+            </div>
+            <!-- /.inner-header-text -->
+            <nav class="inner-header-nav">
+                <a data-modal-help href="#">Допомога</a>
+                <a data-modal-aboutUs href="#">Про проект</a>
+            </nav>
+            <!-- inner-header-nav -->
+        </div>
+        <!-- /.inner-header -->
+    </div>
+    <!-- /.inner -->
+
+    <div class="grid-container d-grid a-i-center j-i-center">
+        
+        <div class="grid-container-header d-flex j-c-center a-i-center">Керування ботом</div>
+        <div class="grid-container-header d-flex j-c-center a-i-center">Моніторинг роботи</div>
+        <div class="grid-container-header d-flex j-c-center a-i-center">Баланс / Аналіз</div>
+        <div class="grid-container-header d-flex j-c-center a-i-center">Аналіз операцій</div>
+        <div class="grid-container-header d-flex j-c-center a-i-center">Проведені транзакції</div>
+        <div class="grid-container-header d-flex j-c-center a-i-center">Ручне керування</div>
+
+        <div class="grid-container-header-currency d-flex j-c-center a-i-center">BTC/USD</div>                     <!-- Перша валюта -->
+        
+        <div class="grid-container-buttons-main d-flex j-c-space-around a-i-center">
+            <div class="grid-container-buttons-main-container d-flex">
+                <div class="grid-buttons d-flex a-i-center j-i-center">
+                    <p> <a data-modal-help-one href="#">Базовий аналіз</a> </p>
+                    <buton id="BtnStart1" class="btn btn-default">Старт</buton>
+                    <buton id="BtnStop1" class="btn btn-default">Стоп</buton>
+                </div>
+                <div id="label1" class="label"></div>
+            </div>
+
+            <div class="grid-container-buttons-main-container d-flex">
+                <div class="grid-buttons d-flex a-i-center j-i-center">
+                    <p> <a data-modal-help-two href="#">RSI-14 аналіз</a> </p>
+                    <buton id="BtnStart2" class="btn btn-default">Старт</buton>
+                    <buton id="BtnStop2" class="btn btn-default">Стоп</buton>
+
+                </div>
+                <div id="label2" class="label"></div>
+            </div>
+
+            <div class="grid-container-buttons-main-container d-flex">
+                <div class="grid-buttons d-flex a-i-center j-i-center">
+                    <p> <a data-modal-help-three href="#">Тест алгоритм</a> </p>
+                    <buton id="BtnStart3" class="btn btn-default">Старт</buton>
+                    <buton id="BtnStop3" class="btn btn-default">Стоп</buton>
+
+                </div>
+                <div id="label3" class="label"></div>
+            </div>
+
+        </div>
+        <!-- grid-container-buttons-main -->
+
+        <div class="grid-container-monitor d-grid">
+            <div class="grid-container-monitor-up d-grid a-i-center t-a-center">
+                <div class="grid-container-monitor-name">База</div>
+                <div class="grid-container-monitor-name">Курс</div>
+                <div class="grid-container-monitor-name">Різниця</div>
+                <div class="grid-container-monitor-name">Б-рішення</div>
+                <div class="grid-container-monitor-data ">25295.72</div>
+                <div class="grid-container-monitor-data">25418.77</div>
+                <div class="grid-container-monitor-data">0.48</div>
+                <div class="grid-container-monitor-data">noComm</div>
+            </div>
+            <div class="grid-container-monitor-down d-grid a-i-center t-a-center">
+                <div class="grid-container-monitor-name">RSI</div>
+                <div class="grid-container-monitor-name">Тренд</div>
+                <div class="grid-container-monitor-name">Дивергенція</div>
+                <div class="grid-container-monitor-name">R-рішення</div>
+                <div class="grid-container-monitor-data">45.08</div>
+                <div class="grid-container-monitor-data"><img src="img/down.png" alt="trend"></div>
+                <div class="grid-container-monitor-data">no</div>
+                <div class="grid-container-monitor-data">noComm</div>
+            </div>
+        </div>
+        <!-- /.grid-container-monitor -->
+        <div class="grid-container-balance d-flex j-c-center a-i-center">
+
+            <div class="grid-container-balance-inner d-grid j-i-center">
+                <p id="balance_crMain" class="font-weigth-bold">BTC</p>
+                <p id="balance_crSub" class="font-weigth-bold">USD</p>
+                <p id="balance_Main" class="font-weight-normal">0.0004528</p>
+                <p id="balance_Sub" class="font-weight-normal">8.21</p>
+            </div>
+
+            <div class="grid-container-differnce-inner d-grid j-i-center a-i-center">
+                <p class="font-weigth-bold"></p>
+                <p class="font-weigth-bold">тип</p>
+                <p class="font-weigth-bold">курс</p>
+                <p class="font-weigth-bold">BTC</p>
+                <p class="font-weigth-bold">USD</p>
+                <p class="font-weigth-bold j-s-left">Остання операція</p>
+                <p id="last_operation_type" class="font-weight-normal">sell</p>
+                <p id="last_operation_rate" class="font-weight-normal">25807.19</p>
+                <p id="last_operation_balanceMain" class="font-weight-normal">0.0003200</p>
+                <p id="last_operation_balanceSub" class="font-weight-normal">8.26</p>
+                <p class="font-weigth-bold j-s-left">Поточний</p>
+                <p class="font-weight-normal"> - </p>
+                <p id="current_rate" class="font-weight-normal">25358.81</p>
+                <p id="current_balanceMain" class="font-weight-normal">0.0003237</p>
+                <p id="current_balanceSub" class="font-weight-normal">8.21</p>
+                <p class="font-weigth-bold" class="font-weight-normal j-s-left">Різниця, %</p>
+                <p class="font-weight-normal"> - </p>
+                <p id="difference_rate" class="font-weight-normal">-1.81</p>
+                <p id="difference_balanceMain" class="font-weight-normal">1.19</p>
+                <p id="difference_balanceSub" class="font-weight-normal">-0.60</p>
+
+            </div>
+        </div>
+        <!-- /.grid-container-balance -->
+
+        <div class="grid-container-analysis d-grid j-i-center a-i-center">
+            <p class="font-weigth-bold"></p>
+            <p class="font-weigth-bold">тип</p>
+            <p class="font-weigth-bold">курс</p>
+            <p class="font-weigth-bold">BTC</p>
+            <p class="font-weigth-bold">USD</p>
+            <p class="font-weigth-bold j-s-left">Перед остання</p>
+            <p id="p_last_operation_type" class="font-weight-normal">buy</p>
+            <p id="p_last_operation_rate" class="font-weight-normal">24956.53</p>
+            <p id="p_last_operation_balanceMain" class="font-weight-normal">0.0003210</p>
+            <p id="p_last_operation_balanceSub" class="font-weight-normal">8.01</p>
+            <p class="font-weigth-bold j-s-left">Осатння </p>
+            <p id="last_operation_type_a" class="font-weight-normal">sell</p>
+            <p id="last_operation_rate_a" class="font-weight-normal">25807.19</p>
+            <p id="last_operation_balanceMain_a" class="font-weight-normal">0.0003200</p>
+            <p id="last_operation_balanceSub_a" class="font-weight-normal">8.26</p>
+            <p class="font-weigth-bold j-s-left">Різниця, % </p>
+            <p class="font-weight-normal"> - </p>
+            <p id="pl_difference_rate" class="font-weight-normal">3.30</p>
+            <p id="pl_difference_balanceMain" class="font-weight-normal">-0.30</p>
+            <p id="pl_difference_balanceSub" class="font-weight-normal">3.01</p>
+        </div>
+        <!-- /.grid-container-analysis -->
+
+        <div class="grid-container-transactions d-flex j-s-left a-c-center">
+            <p id="transactions">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad voluptatem voluptate
+                aperiam nihil quod. Tenetur vero eum, exercitationem cum dolores rem quae expedita rerum. Odit tempora
+                impedit excepturi minima quos. </p>
+        </div>
+        <!-- /.grid-container-transactions -->
+
+        <div class="grid-container-buttons-sub d-flex j-c-space-around a-i-center">
+            <div class="grid-buttons d-grid a-i-center">
+                <buton id="BtnSub1" class="btn btn-default">Відм. всі ордери</buton>
+                <buton id="BtnSub21" class="btn btn-default">Прдати BTC</buton>
+                <buton id="BtnSub3" class="btn btn-default">Продати USD</buton>
+                <buton id="BtnSub4" class="btn btn-default">База > пот.курс</buton>
+                <buton id="BtnSub5" class="btn btn-default">База > ост.операція</buton>
+                <buton id="BtnSub6" class="btn btn-default">Запасна кнопка</buton>
+            </div>
+        </div>
+        <!-- grid-container-buttons-sub -->
+
+        <div class="grid-container-header-currency d-flex j-c-center a-i-center">XRP/BTC</div>                      <!-- Друга валюта -->
+
+        <div class="grid-container-buttons-main d-flex j-c-space-around a-i-center">
+            <div class="grid-container-buttons-main-container d-flex">
+                <div class="grid-buttons d-flex a-i-center j-i-center">
+                    <p> <a data-modal-help-one href="#">Базовий аналіз</a> </p>
+                    <buton id="BtnStart1" class="btn btn-default">Старт</buton>
+                    <buton id="BtnStop1" class="btn btn-default">Стоп</buton>
+                </div>
+                <div id="label1" class="label"></div>
+            </div>
+
+            <div class="grid-container-buttons-main-container d-flex">
+                <div class="grid-buttons d-flex a-i-center j-i-center">
+                    <p> <a data-modal-help-two href="#">RSI-14 аналіз</a> </p>
+                    <buton id="BtnStart2" class="btn btn-default">Старт</buton>
+                    <buton id="BtnStop2" class="btn btn-default">Стоп</buton>
+
+                </div>
+                <div id="label2" class="label"></div>
+            </div>
+
+            <div class="grid-container-buttons-main-container d-flex">
+                <div class="grid-buttons d-flex a-i-center j-i-center">
+                    <p> <a data-modal-help-three href="#">Тест алгоритм</a> </p>
+                    <buton id="BtnStart3" class="btn btn-default">Старт</buton>
+                    <buton id="BtnStop3" class="btn btn-default">Стоп</buton>
+
+                </div>
+                <div id="label3" class="label"></div>
+            </div>
+
+        </div>
+        <!-- grid-container-buttons-main -->
+
+        <div class="grid-container-monitor d-grid">
+            <div class="grid-container-monitor-up d-grid a-i-center t-a-center">
+                <div class="grid-container-monitor-name">База</div>
+                <div class="grid-container-monitor-name">Курс</div>
+                <div class="grid-container-monitor-name">Різниця</div>
+                <div class="grid-container-monitor-name">Б-рішення</div>
+                <div class="grid-container-monitor-data ">25295.72</div>
+                <div class="grid-container-monitor-data">25418.77</div>
+                <div class="grid-container-monitor-data">0.48</div>
+                <div class="grid-container-monitor-data">noComm</div>
+            </div>
+            <div class="grid-container-monitor-down d-grid a-i-center t-a-center">
+                <div class="grid-container-monitor-name">RSI</div>
+                <div class="grid-container-monitor-name">Тренд</div>
+                <div class="grid-container-monitor-name">Дивергенція</div>
+                <div class="grid-container-monitor-name">R-рішення</div>
+                <div class="grid-container-monitor-data">45.08</div>
+                <div class="grid-container-monitor-data"><img src="img/down.png" alt="trend"></div>
+                <div class="grid-container-monitor-data">no</div>
+                <div class="grid-container-monitor-data">noComm</div>
+            </div>
+        </div>
+        <!-- /.grid-container-monitor -->
+        <div class="grid-container-balance d-flex j-c-center a-i-center">
+
+            <div class="grid-container-balance-inner d-grid j-i-center">
+                <p id="balance_crMain" class="font-weigth-bold">XRP</p>
+                <p id="balance_crSub" class="font-weigth-bold">BTC</p>
+                <p id="balance_Main" class="font-weight-normal">0.0004528</p>
+                <p id="balance_Sub" class="font-weight-normal">8.21</p>
+            </div>
+
+            <div class="grid-container-differnce-inner d-grid j-i-center a-i-center">
+                <p class="font-weigth-bold"></p>
+                <p class="font-weigth-bold">тип</p>
+                <p class="font-weigth-bold">курс</p>
+                <p class="font-weigth-bold">XRP</p>
+                <p class="font-weigth-bold">BTC</p>
+                <p class="font-weigth-bold j-s-left">Остання операція</p>
+                <p id="last_operation_type" class="font-weight-normal">sell</p>
+                <p id="last_operation_rate" class="font-weight-normal">25807.19</p>
+                <p id="last_operation_balanceMain" class="font-weight-normal">0.0003200</p>
+                <p id="last_operation_balanceSub" class="font-weight-normal">8.26</p>
+                <p class="font-weigth-bold j-s-left">Поточний</p>
+                <p class="font-weight-normal"> - </p>
+                <p id="current_rate" class="font-weight-normal">25358.81</p>
+                <p id="current_balanceMain" class="font-weight-normal">0.0003237</p>
+                <p id="current_balanceSub" class="font-weight-normal">8.21</p>
+                <p class="font-weigth-bold" class="font-weight-normal j-s-left">Різниця, %</p>
+                <p class="font-weight-normal"> - </p>
+                <p id="difference_rate" class="font-weight-normal">-1.81</p>
+                <p id="difference_balanceMain" class="font-weight-normal">1.19</p>
+                <p id="difference_balanceSub" class="font-weight-normal">-0.60</p>
+
+            </div>
+        </div>
+        <!-- /.grid-container-balance -->
+
+        <div class="grid-container-analysis d-grid j-i-center a-i-center">
+            <p class="font-weigth-bold"></p>
+            <p class="font-weigth-bold">тип</p>
+            <p class="font-weigth-bold">курс</p>
+            <p class="font-weigth-bold">XRP</p>
+            <p class="font-weigth-bold">BTC</p>
+            <p class="font-weigth-bold j-s-left">Перед остання</p>
+            <p id="p_last_operation_type" class="font-weight-normal">buy</p>
+            <p id="p_last_operation_rate" class="font-weight-normal">24956.53</p>
+            <p id="p_last_operation_balanceMain" class="font-weight-normal">0.0003210</p>
+            <p id="p_last_operation_balanceSub" class="font-weight-normal">8.01</p>
+            <p class="font-weigth-bold j-s-left">Осатння </p>
+            <p id="last_operation_type_a" class="font-weight-normal">sell</p>
+            <p id="last_operation_rate_a" class="font-weight-normal">25807.19</p>
+            <p id="last_operation_balanceMain_a" class="font-weight-normal">0.0003200</p>
+            <p id="last_operation_balanceSub_a" class="font-weight-normal">8.26</p>
+            <p class="font-weigth-bold j-s-left">Різниця, % </p>
+            <p class="font-weight-normal"> - </p>
+            <p id="pl_difference_rate" class="font-weight-normal">3.30</p>
+            <p id="pl_difference_balanceMain" class="font-weight-normal">-0.30</p>
+            <p id="pl_difference_balanceSub" class="font-weight-normal">3.01</p>flex_btn
+        </div>
+        <!-- /.grid-container-analysis -->
+
+        <div class="grid-container-transactions d-flex j-s-left a-c-center">
+            <p id="transactions">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad voluptatem voluptate
+                aperiam nihil quod. Tenetur vero eum, exercitationem cum dolores rem quae expedita rerum. Odit tempora
+                impedit excepturi minima quos. </p>
+        </div>
+        <!-- /.grid-container-transactions -->
+
+        <div class="grid-container-buttons-sub d-flex j-c-space-around a-i-center">
+            <div class="grid-buttons d-grid a-i-center">
+                <buton id="BtnSub1" class="btn btn-default">Відм. всі ордери</buton>
+                <buton id="BtnSub21" class="btn btn-default">Прдати XRP</buton>
+                <buton id="BtnSub3" class="btn btn-default">Продати BTC</buton>
+                <buton id="BtnSub4" class="btn btn-default">База > пот.курс</buton>
+                <buton id="BtnSub5" class="btn btn-default">База > ост.операція</buton>
+                <buton id="BtnSub6" class="btn btn-default">Запасна кнопка</buton>
+            </div>
+        </div>
+        <!-- grid-container-buttons-sub -->
+        <div class="grid-container-header-currency d-flex j-c-center a-i-center">DASH/BTC</div>                        <!-- Третя валюта -->
+
+        <div class="grid-container-buttons-main d-flex j-c-space-around a-i-center">
+            <div class="grid-container-buttons-main-container d-flex">
+                <div class="grid-buttons d-flex a-i-center j-i-center">
+                    <p> <a data-modal-help-one href="#">Базовий аналіз</a> </p>
+                    <buton id="BtnStart1" class="btn btn-default">Старт</buton>
+                    <buton id="BtnStop1" class="btn btn-default">Стоп</buton>
+                </div>
+                <div id="label1" class="label"></div>
+            </div>
+
+            <div class="grid-container-buttons-main-container d-flex">
+                <div class="grid-buttons d-flex a-i-center j-i-center">
+                    <p> <a data-modal-help-two href="#">RSI-14 аналіз</a> </p>
+                    <buton id="BtnStart2" class="btn btn-default">Старт</buton>
+                    <buton id="BtnStop2" class="btn btn-default">Стоп</buton>
+
+                </div>
+                <div id="label2" class="label"></div>
+            </div>
+
+            <div class="grid-container-buttons-main-container d-flex">
+                <div class="grid-buttons d-flex a-i-center j-i-center">
+                    <p> <a data-modal-help-three href="#">Тест алгоритм</a> </p>
+                    <buton id="BtnStart3" class="btn btn-default">Старт</buton>
+                    <buton id="BtnStop3" class="btn btn-default">Стоп</buton>
+
+                </div>
+                <div id="label3" class="label"></div>
+            </div>
+
+        </div>
+        <!-- grid-container-buttons-main -->
+
+        <div class="grid-container-monitor d-grid">
+            <div class="grid-container-monitor-up d-grid a-i-center t-a-center">
+                <div class="grid-container-monitor-name">База</div>
+                <div class="grid-container-monitor-name">Курс</div>
+                <div class="grid-container-monitor-name">Різниця</div>
+                <div class="grid-container-monitor-name">Б-рішення</div>
+                <div class="grid-container-monitor-data ">25295.72</div>
+                <div class="grid-container-monitor-data">25418.77</div>
+                <div class="grid-container-monitor-data">0.48</div>
+                <div class="grid-container-monitor-data">noComm</div>
+            </div>
+            <div class="grid-container-monitor-down d-grid a-i-center t-a-center">
+                <div class="grid-container-monitor-name">RSI</div>
+                <div class="grid-container-monitor-name">Тренд</div>
+                <div class="grid-container-monitor-name">Дивергенція</div>
+                <div class="grid-container-monitor-name">R-рішення</div>
+                <div class="grid-container-monitor-data">45.08</div>
+                <div class="grid-container-monitor-data"><img src="img/down.png" alt="trend"></div>
+                <div class="grid-container-monitor-data">no</div>
+                <div class="grid-container-monitor-data">noComm</div>
+            </div>
+        </div>
+        <!-- /.grid-container-monitor -->
+        <div class="grid-container-balance d-flex j-c-center a-i-center">
+
+            <div class="grid-container-balance-inner d-grid j-i-center">
+                <p id="balance_crMain" class="font-weigth-bold">DASH</p>
+                <p id="balance_crSub" class="font-weigth-bold">BTC</p>
+                <p id="balance_Main" class="font-weight-normal">0.0004528</p>
+                <p id="balance_Sub" class="font-weight-normal">8.21</p>
+            </div>
+
+            <div class="grid-container-differnce-inner d-grid j-i-center a-i-center">
+                <p class="font-weigth-bold"></p>
+                <p class="font-weigth-bold">тип</p>
+                <p class="font-weigth-bold">курс</p>
+                <p class="font-weigth-bold">DASH</p>
+                <p class="font-weigth-bold">BTC</p>
+                <p class="font-weigth-bold j-s-left">Остання операція</p>
+                <p id="last_operation_type" class="font-weight-normal">sell</p>
+                <p id="last_operation_rate" class="font-weight-normal">25807.19</p>
+                <p id="last_operation_balanceMain" class="font-weight-normal">0.0003200</p>
+                <p id="last_operation_balanceSub" class="font-weight-normal">8.26</p>
+                <p class="font-weigth-bold j-s-left">Поточний</p>
+                <p class="font-weight-normal"> - </p>
+                <p id="current_rate" class="font-weight-normal">25358.81</p>
+                <p id="current_balanceMain" class="font-weight-normal">0.0003237</p>
+                <p id="current_balanceSub" class="font-weight-normal">8.21</p>
+                <p class="font-weigth-bold" class="font-weight-normal j-s-left">Різниця, %</p>
+                <p class="font-weight-normal"> - </p>
+                <p id="difference_rate" class="font-weight-normal">-1.81</p>
+                <p id="difference_balanceMain" class="font-weight-normal">1.19</p>
+                <p id="difference_balanceSub" class="font-weight-normal">-0.60</p>
+
+            </div>
+        </div>
+        <!-- /.grid-container-balance -->
+
+        <div class="grid-container-analysis d-grid j-i-center a-i-center">
+            <p class="font-weigth-bold"></p>
+            <p class="font-weigth-bold">тип</p>
+            <p class="font-weigth-bold">курс</p>
+            <p class="font-weigth-bold">DASH</p>
+            <p class="font-weigth-bold">BTC</p>
+            <p class="font-weigth-bold j-s-left">Перед остання</p>
+            <p id="p_last_operation_type" class="font-weight-normal">buy</p>
+            <p id="p_last_operation_rate" class="font-weight-normal">24956.53</p>
+            <p id="p_last_operation_balanceMain" class="font-weight-normal">0.0003210</p>
+            <p id="p_last_operation_balanceSub" class="font-weight-normal">8.01</p>
+            <p class="font-weigth-bold j-s-left">Осатння </p>
+            <p id="last_operation_type_a" class="font-weight-normal">sell</p>
+            <p id="last_operation_rate_a" class="font-weight-normal">25807.19</p>
+            <p id="last_operation_balanceMain_a" class="font-weight-normal">0.0003200</p>
+            <p id="last_operation_balanceSub_a" class="font-weight-normal">8.26</p>
+            <p class="font-weigth-bold j-s-left">Різниця, % </p>
+            <p class="font-weight-normal"> - </p>
+            <p id="pl_difference_rate" class="font-weight-normal">3.30</p>
+            <p id="pl_difference_balanceMain" class="font-weight-normal">-0.30</p>
+            <p id="pl_difference_balanceSub" class="font-weight-normal">3.01</p>
+        </div>
+        <!-- /.grid-container-analysis -->
+
+        <div class="grid-container-transactions d-flex j-s-left a-c-center">
+            <p id="transactions">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad voluptatem voluptate
+                aperiam nihil quod. Tenetur vero eum, exercitationem cum dolores rem quae expedita rerum. Odit tempora
+                impedit excepturi minima quos. </p>
+        </div>
+        <!-- /.grid-container-transactions -->
+
+        <div class="grid-container-buttons-sub d-flex j-c-space-around a-i-center">
+            <div class="grid-buttons d-grid a-i-center">
+                <buton id="BtnSub1" class="btn btn-default">Відм. всі ордери</buton>
+                <buton id="BtnSub21" class="btn btn-default">Прдати DASH</buton>
+                <buton id="BtnSub3" class="btn btn-default">Продати BTC</buton>
+                <buton id="BtnSub4" class="btn btn-default">База > пот.курс</buton>
+                <buton id="BtnSub5" class="btn btn-default">База > ост.операція</buton>
+                <buton id="BtnSub6" class="btn btn-default">Запасна кнопка</buton>
+            </div>
+        </div>
+        <!-- grid-container-buttons-sub -->
+        <!-- <div class="test">9</div>
+        <div class="test">10</div>
+        <div class="test">11</div>
+        <div class="test">12</div>
+        <div class="test">13</div>
+        <div class="test">14</div>
+        <div class="test">15</div> -->
+    </div>
+    <!-- /.grid-container -->
+    <script type ="text/javascript" src="JS/fetchExmo.js"></script>
+</body>
+
+</html>
